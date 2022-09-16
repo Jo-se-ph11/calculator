@@ -1,50 +1,3 @@
-const buttons = document.querySelector('#btn');
-const screen = document.querySelector('#screen');
-const btn0 = document.createElement('button')
-const btn1 = document.createElement('button');
-const btn2 = document.createElement('button');
-const btn3 = document.createElement('button');
-const btn4 = document.createElement('button');
-const btn5 = document.createElement('button');
-const btn6 = document.createElement('button');
-const btn7 = document.createElement('button');
-const btn8 = document.createElement('button');
-const btn9 = document.createElement('button');
-const equal_btn = document.createElement('button');
-const clear_btn = document.createElement('button');
-const del_btn = document.createElement('button');
-
-clear_btn.textContent = "clear"
-del_btn.textContent = "del"
-btn1.textContent = 1;
-btn2.textContent = 2;
-btn3.textContent = 3;
-btn4.textContent = 4;
-btn5.textContent = 5;
-btn6.textContent = 6;
-btn7.textContent = 7;
-btn8.textContent = 8;
-btn9.textContent = 9;
-btn0.textContent = 0;
-equal_btn.textContent = "=";
-
-buttons.appendChild(clear_btn).classList.add('btn');
-buttons.appendChild(del_btn).classList.add('btn');
-buttons.appendChild(btn1).classList.add('btn');
-buttons.appendChild(btn2).classList.add('btn');
-buttons.appendChild(btn3).classList.add('btn');
-buttons.appendChild(btn4).classList.add('btn');
-buttons.appendChild(btn5).classList.add('btn');
-buttons.appendChild(btn6).classList.add('btn');
-buttons.appendChild(btn7).classList.add('btn');
-buttons.appendChild(btn8).classList.add('btn');
-buttons.appendChild(btn9).classList.add('btn');
-buttons.appendChild(btn0).classList.add('btn');
-buttons.appendChild(equal_btn).classList.add('btn');
-
-
-
-
 const add = (num1, num2) => {
     return num1 + num2;
 }
@@ -87,3 +40,50 @@ const operate = (num1, operator, num2) => {
     }
 }
 console.log(operate(20, '*', 4))
+    
+const screen = document.querySelector('.screen');
+const clear = document.querySelector('.btn-clear');
+const del = document.querySelector('.btn-del');
+const percentage = document.querySelector('.percentage-btn');
+const division = document.querySelector('.divide-btn');
+const addition = document.querySelector('.add-btn');
+const multiplication = document.querySelector('.multiply-btn');
+const subtraction = document.querySelector('.subtract-btn');
+const equals = document.querySelector('.equals-btn');
+const one = document.querySelector('.btn-1');
+const two= document.querySelector('.btn-2');
+const three = document.querySelector('.btn-3');
+const four = document.querySelector('.btn-4');
+const five = document.querySelector('.btn-5');
+const six = document.querySelector('.btn-6');
+const seven= document.querySelector('.btn-7');
+const eight = document.querySelector('.btn-8');
+const nine = document.querySelector('.btn-9');
+const zero = document.querySelector('.btn-0');
+const dot = document.querySelector('.btn-dot');
+const div = document.querySelector('.div1');
+const main_btn = document.querySelector('#main-btn');
+const container = document.querySelector('#container');
+  
+const display = ()=> {
+
+    multiplication.addEventListener('click', ()=> screen.textContent = '*');
+    division.addEventListener('click', ()=> screen.textContent = '/');
+    addition.addEventListener('click', ()=> screen.textContent = '+');
+    percentage.addEventListener('click', ()=> screen.textContent = '%');
+    subtraction.addEventListener('click', ()=> screen.textContent = '-');
+    one.addEventListener('click', ()=> screen.textContent = 1);
+    two.addEventListener('click', ()=> screen.textContent = 2);
+    three.addEventListener('click', ()=> screen.textContent = 3);
+    four.addEventListener('click', ()=> screen.textContent = 4);
+    five.addEventListener('click', ()=> screen.textContent = 5);
+    six.addEventListener('click', ()=> screen.textContent = 6);
+    seven.addEventListener('click', ()=> screen.textContent = 7);
+    eight.addEventListener('click', ()=> screen.textContent = 8);
+    nine.addEventListener('click', ()=> screen.textContent = 9);
+    dot.addEventListener('click', ()=> screen.textContent = ".");
+    zero.addEventListener('click', ()=> screen.textContent = 0);
+   
+}
+display();
+
