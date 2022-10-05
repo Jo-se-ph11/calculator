@@ -1,89 +1,112 @@
-const add = (num1, num2) => {
-    return num1 + num2;
-}
+const calculator = () => {
 
-const subtract = (num1, num2) => {
-    return num1 - num2;
-}
+    const previous_display = document.querySelector('.previous-display');
+    const current_display = document.querySelector('.current-display');
+    const num_btn =  document.querySelectorAll('.num');
+    const opp_btn =  document.querySelectorAll('.operation');
+    const clear = document.querySelector('.btn-clear');
+    const del = document.querySelector('.btn-del');
+    const equals = document.querySelector('.equals-btn');
 
-const divide = (num1, num2) => {
-    return num1 / num2;
-}
+    let current_value = [];
+    let previous_value = [];
+    let operator_value = [];
 
-const multiply = (num1, num2) => {
-    return num1 * num2;
-}
+    function buttons() {
 
-const modulus = (num1, num2) => {
-    return num1 % num2;
-}
-
-const operate = (num1, operator, num2) => {
-    switch (operator) {
-        case '+': 
-            return add(num1, num2);
-            break;
-        case '-': 
-            return subtract(num1, num2);
-            break;
-        case '/': 
-            return divide(num1, num2);
-            break;
-        case '*': 
-            return multiply(num1, num2);
-            break;
-        case '%': 
-            return modulus(num1, num2);
-            break;
-        default:
-            break;
-    }
-}
-console.log(operate(20, '*', 4))
+        clear.addEventListener('click', ()=> {
+            current_value= [];
+            previous_value = [];
+            operator_value = [];
+            screen();
     
-const screen = document.querySelector('.screen');
-const clear = document.querySelector('.btn-clear');
-const del = document.querySelector('.btn-del');
-const percentage = document.querySelector('.percentage-btn');
-const division = document.querySelector('.divide-btn');
-const addition = document.querySelector('.add-btn');
-const multiplication = document.querySelector('.multiply-btn');
-const subtraction = document.querySelector('.subtract-btn');
-const equals = document.querySelector('.equals-btn');
-const one = document.querySelector('.btn-1');
-const two= document.querySelector('.btn-2');
-const three = document.querySelector('.btn-3');
-const four = document.querySelector('.btn-4');
-const five = document.querySelector('.btn-5');
-const six = document.querySelector('.btn-6');
-const seven= document.querySelector('.btn-7');
-const eight = document.querySelector('.btn-8');
-const nine = document.querySelector('.btn-9');
-const zero = document.querySelector('.btn-0');
-const dot = document.querySelector('.btn-dot');
-const div = document.querySelector('.div1');
-const main_btn = document.querySelector('#main-btn');
-const container = document.querySelector('#container');
-  
-const display = ()=> {
+        })
+    
+        del.addEventListener('click', ()=> {
+            let temp_variable;
+            temp_variable = current_value.toString().slice(0, -1);
+            current_value = parseFloat(temp_variable);
+            screen();
+            if (temp_variable === 0 || temp_variable === []) {
+                temp_variable = 0;
+                current_value = temp_variable;
+                screen();
+            }            
+        })
+    
+        num_btn.forEach(btn => {
+            btn.addEventListener('click', ()=> {
+                if(btn.textContent === '.' && current_value.includes('.'))return;
+                current_value += btn.textContent;
+                screen();
+            })
+           
+        })
+    
+        opp_btn.forEach(btn => {
+            btn.addEventListener('click', ()=> {
+                operator_value = btn.textContent;
+                calculate();
+                screen();
+            })
+           
+        })
 
-    multiplication.addEventListener('click', ()=> screen.textContent = '*');
-    division.addEventListener('click', ()=> screen.textContent = '/');
-    addition.addEventListener('click', ()=> screen.textContent = '+');
-    percentage.addEventListener('click', ()=> screen.textContent = '%');
-    subtraction.addEventListener('click', ()=> screen.textContent = '-');
-    one.addEventListener('click', ()=> screen.textContent = 1);
-    two.addEventListener('click', ()=> screen.textContent = 2);
-    three.addEventListener('click', ()=> screen.textContent = 3);
-    four.addEventListener('click', ()=> screen.textContent = 4);
-    five.addEventListener('click', ()=> screen.textContent = 5);
-    six.addEventListener('click', ()=> screen.textContent = 6);
-    seven.addEventListener('click', ()=> screen.textContent = 7);
-    eight.addEventListener('click', ()=> screen.textContent = 8);
-    nine.addEventListener('click', ()=> screen.textContent = 9);
-    dot.addEventListener('click', ()=> screen.textContent = ".");
-    zero.addEventListener('click', ()=> screen.textContent = 0);
-   
+        equals.addEventListener('click', ()=> {
+            console.log("clicked")
+            calculate();
+            screen();
+        })
+
+    }
+    buttons()
+
+    function calculate() {
+       
+        let curr = parseFloat(current_value);
+        let pre = parseFloat(previous_value)
+        previous_value = `${current_value}${operator_value}`;
+        let temp = [previous_value]
+        current_value = [];
+        let result;
+        
+        if(isNaN(pre) || isNaN(curr)) return;
+        (operator_value === '+')? result = pre + curr
+        :(operator_value === '*')? result = pre* curr
+        :(operator_value === '/')? result = pre / curr
+        :(operator_value === '-')? result = pre - curr
+        :(operator_value === '%')? result = pre % curr
+        :'';
+        const rounded = Math.round((result + Number.EPSILON) * 100) /100
+        if(rounded == Infinity) {
+           current_value = "You can't divide by zero"
+        } else {
+            current_value = rounded;
+        }
+    }
+
+    function screen() {
+        current_display.textContent = current_value;
+        previous_display.textContent = previous_value;
+        
+    }
+
 }
-display();
+calculator();
+//if equals sign is clicked, call calculate and display the result
+//if another operator is clicked without clicking the equals sign, 
+//and num1, op, and num2 has already been clicked, calculate them 
+//first and use the result as the previous value
 
+
+function test(a, op, n2) {
+   let res;
+   
+    if(op === "+") {
+        return res = a + n2;
+    } else if(op === "*") {
+        return res = a * n2;
+    }
+
+}
+//console.log(test(prompt("num1:"), prompt("Operator:"), prompt("num2:")))

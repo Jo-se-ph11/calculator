@@ -1,0 +1,95 @@
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 493px;
+    width: 400px;
+    background-color: white;
+    border: 10px solid rgb(244, 18, 244);
+    margin-top: 140px;
+    padding: 4px 4px 0px 4px; 
+    gap: 4px;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: greenyellow;
+}
+
+.div1 {
+    display: flex;
+    gap: 2px; 
+}
+
+#main-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+   
+}
+.btn-clear,
+.btn-del,
+.operation,
+.equals-btn,
+.num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 100px;
+    border-radius: 8px;
+    border-color: none; 
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    background-color: white;
+    color: rgb(244, 18, 244);   
+}
+
+.operation,
+.equals-btn  {
+    background-color: rgb(244, 18, 244);
+    color: white;
+    font-size: bold;
+}
+
+.btn-0 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    border-radius: 10px;  
+    width: 200px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    background-color: white;
+    color: rgb(244, 18, 244);
+    
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    justify-content: space-around;
+    align-items: flex-end;
+    border: 2px solid white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    color: white;
+    font-size: bold;
+    gap: 2px;
+    padding: 2px;
+    height: 140px;
+    width: 395px;
+    background-color: rgb(244, 18, 244);
+}
+
+.previous-display {
+    font-size: 20px;
+    font-size: bold;
+}
